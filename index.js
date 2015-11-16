@@ -1,7 +1,6 @@
 'use strict';
 var gutil = require('gulp-util');
 var through = require('through2');
-var pretty = require('json-prettify');
 
 module.exports = function (options) {
     return through.obj(function (file, enc, cb) {
