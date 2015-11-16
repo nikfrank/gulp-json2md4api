@@ -1,8 +1,27 @@
 {
-    title:'cani-dynamo',
+    title:'Cani-dynamo',
+    missionStatement:'Cani-dynamo makes using AWS dynamoDB more like actual noSQL',
+    firstExample:"Cani.dynamo.save('item', nuItem).then(...);\n"+
+	"Cani.dynamo.load('item', {owner:this.userId}).then(...);",
+    scripts:['aws-sdk.js','canijs/cani.js','canijs/cani-dynamo/cani-dynamo.js'],
+
+    basicUse:["Cani.dynamo.save('item', {\n"+
+	      "   owner:this.userId, id:1440, somehash:'blahblahblah', price:2000\n"+
+	      "}).then(function(res){\n"+
+	      "   // I can't remember what res is here. Should probably check that!\n"+
+	      "});",
+	      "Cani.dynamo.load('item', {price:{LT:3000}).then(function(items){\n"+
+	      "   console.log('there are '+items.length+' items under 3000 shmekels');\n"+
+	      "});"],
+    basicUsePostText:'Read the AWS [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/'+
+	'latest/AWS/DynamoDB.html)\n'+
+	'to learn about indices (GSI) that will let you query your data how you please',
+
+    exampleLink:'',
+
     configExample:{
 	schemas:{
-	    appt:{
+	    item:{
 		fields:{somehash:'S', id:'N', owner:'S', price:'N'},
 		table:{
 		    arn:'arn:aws:dynamodb:eu-west-1:000000000000:table/tableName',
