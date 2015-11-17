@@ -30,7 +30,7 @@ module.exports = function (options) {
 
 function json2md(src, opt, cb){
     // here render the md.
-
+    src = eval('('+src+')');
     var template = 
 
 "# "+src.title+"\n\n"+src.missionStatement+
@@ -38,7 +38,9 @@ function json2md(src, opt, cb){
 src.firstExample+
 "\n```\n\n\n"+
 "```html"+
-src.scripts.map((s) => ('<script src=\"'+s+'\"></script>')).join('\n')+
+src.scripts.map(function(s){
+    return '<script src=\"'+s+'\"></script>';
+}).join('\n')+
 "```\n\n"+
 "just put this in your Caniconfig\n\n"+
 "```js\n"+syntaxHighlight(src.configExample)+
@@ -78,7 +80,7 @@ src.basicUse.join('\n```\n```js\n')+
 
 "...'";
 
-    return template;
+    cb(null, template);
 
 }
 
