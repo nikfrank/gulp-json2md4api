@@ -10,7 +10,7 @@
 	      "}).then(function(res){\n"+
 	      "   // I can't remember what res is here. Should probably check that!\n"+
 	      "});",
-	      "Cani.dynamo.load('item', {price:{LT:3000}).then(function(items){\n"+
+	      "Cani.dynamo.load('item', {price:{LT:3000}}).then(function(items){\n"+
 	      "   console.log('there are '+items.length+' items under 3000 shmekels');\n"+
 	      "});"],
     basicUsePostText:'Read the AWS [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/'+
@@ -20,18 +20,20 @@
     exampleLink:'',
 
     configExample:{
-	schemas:{
-	    item:{
-		fields:{somehash:'S', id:'N', owner:'S', price:'N'},
-		table:{
-		    arn:'arn:aws:dynamodb:eu-west-1:000000000000:table/tableName',
-		    hashKey:'id', rangeKey:'somehash',
-		    indices:(([])) // still needs to be implemented
+	dynamo:{
+	    schemas:{
+		item:{
+		    fields:{somehash:'S', id:'N', owner:'S', price:'N'},
+		    table:{
+			arn:'arn:aws:dynamodb:eu-west-1:000000000000:table/tableName',
+			hashKey:'id', rangeKey:'somehash',
+			indices:(([])) // still needs to be implemented
+		    }
 		}
-	    }
-	},
-	awsConfigPack:{region: 'eu-west-1'},
-	initOn:['cognito: fb-login']
+	    },
+	    awsConfigPack:{region: 'eu-west-1'},
+	    initOn:['cognito: fb-login']
+	}
     },
     configDescription:{
 	dynamo:{

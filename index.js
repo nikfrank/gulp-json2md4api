@@ -34,15 +34,16 @@ function json2md(src, opt, cb){
     var template = 
 
 "# "+src.title+"\n\n"+src.missionStatement+
-"```js\n"+
+"\n```js\n"+
 src.firstExample+
 "\n```\n\n\n"+
-"```html"+
+'include these scripts\n\n'+
+"```html\n"+
 src.scripts.map(function(s){
     return '<script src=\"'+s+'\"></script>';
 }).join('\n')+
-"```\n\n"+
-"just put this in your Caniconfig\n\n"+
+"\n```\n\n"+
+"put this in your Caniconfig\n\n"+
 "```js\n"+syntaxHighlight(src.configExample)+
 "\n```\n\n"+
 
@@ -63,7 +64,7 @@ src.scripts.map(function(s){
 
 "```js\n"+
 src.basicUse.join('\n```\n```js\n')+
-"```\n\n"+
+"\n```\n\n"+
 
 "Read the AWS [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html)\n"+
 "to learn about indices (GSI) that will let you query your data how you please\n\n\n"+
@@ -100,6 +101,6 @@ function syntaxHighlight(json){
         } else if (/null/.test(match)) {
             cls = 'null';
         }
-        return '<span class="' + cls + '">' + match + '</span>';
+        return match;//'<span class="' + cls + '">' + match + '</span>';
     });
 }
