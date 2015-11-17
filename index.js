@@ -79,6 +79,12 @@ src.basicUse.join('\n```\n```js\n')+
 "## Full API\n"+
 "---\n\n"+
 
+// config
+
+
+// exposures
+
+
 "...'";
 
     cb(null, template);
