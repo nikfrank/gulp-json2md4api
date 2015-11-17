@@ -73,7 +73,7 @@ src.basicUse.join('\n```\n```js\n')+
 "## Examples\n"+
 "---\n\n"+
 
-"Available at ((link))\n\n\n"+
+"Available [`here`](https://github.com/nikfrank/canijs/tree/master/"+src.title.toLowerCase()+"/example)\n\n\n"+
 
 
 "## Full API\n"+
