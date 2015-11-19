@@ -80,15 +80,34 @@ src.basicUse.join('\n```\n```js\n')+
 "---\n\n"+
 
 // config
+'### Config Options\n'+
+"---\n\n"+
+Object.keys(src.configDescription).reduce(objCreduce([], src.configDescription), '')+'\n\n'+
 
 
 // exposures
 
 
-"...'";
+"...";
 
     cb(null, template);
 
+}
+
+function objCreduce(prefices, o){
+    return function(p, c){
+	if(c === '0') return p+o['0']+'\n\n';
+
+	if(typeof o[c] === 'string'){
+	    p += '\n\nconfig.'+prefices.join('.')+'.'+c+'\n---\n\n';
+	    p += o[c]+'\n\n';
+	}
+	else if(typeof o[c] === 'object') {
+	    p += '\n\nconfig.'+prefices.join('.')+'.'+c+'\n---\n\n';
+	    p += Object.keys(o[c]).reduce(objCreduce(prefices.concat(c), o[c]), '')+'\n';
+	}
+	return p;
+    };
 }
 
 function syntaxHighlight(json){

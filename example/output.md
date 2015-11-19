@@ -78,4 +78,82 @@ Available at ((link))
 ## Full API
 ---
 
+### Config Options
+---
+
+config.dynamo.schemas
+---
+
+"types" for the functional minded. Each schema has a table and a format
+
+config.dynamo.schemas.<<schemaName>>
+---
+
+the keys here are the schema names
+
+
+config.dynamo.schemas.<<schemaName>>.fields
+---
+
+object of:
+
+keys - fields on every item;
+
+values - dynamo type.
+
+see: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html
+
+
+config.dynamo.schemas.<<schemaName>>.table
+---
+
+Table description from AWS. Read the DataModel link re: indices
+
+
+config.dynamo.schemas.<<schemaName>>.table.arn
+---
+
+grab this off the table properties
+
+
+config.dynamo.schemas.<<schemaName>>.table.hashKey
+---
+
+exact query main hash key
+
+
+config.dynamo.schemas.<<schemaName>>.table.rangeKey
+---
+
+operator query range key
+
+
+config.dynamo.schemas.<<schemaName>>.table.indices
+---
+
+additional indices on table. Yet unimplemented here.
+
+
+---
+---
+
+
+config.dynamo.awsConfigPack
+---
+
+object to configure region. This is inconsistent withe cognito conf :(
+
+
+config.dynamo.initOn
+---
+
+array of events to trigger Cani.dynamo.init on. Use this with login events!
+
+
+---
+
+
+### Module Exposures
+
+
 ...

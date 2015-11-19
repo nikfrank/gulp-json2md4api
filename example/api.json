@@ -39,7 +39,7 @@
 	dynamo:{
 	    schemas:{
 		'0':'"types" for the functional minded. Each schema has a table and a format',
-		schemaName:{
+		"<<schemaName>>":{
 		    '0':'the keys here are the schema names',
 		    fields:'object of:\n\nkeys - fields on every item; \n\n values - dynamo type. see: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html',
 		    table:{
