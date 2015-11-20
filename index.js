@@ -66,9 +66,7 @@ src.scripts.map(function(s){
 src.basicUse.join('\n```\n```js\n')+
 "\n```\n\n"+
 
-"Read the AWS [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html)\n"+
-"to learn about indices (GSI) that will let you query your data how you please\n\n\n"+
-
+src.basicUsePostText+
 
 "## Examples\n"+
 "---\n\n"+
