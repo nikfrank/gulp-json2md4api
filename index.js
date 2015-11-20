@@ -91,7 +91,7 @@ Object.keys(src.configDescription).reduce(objCreduce([], src.configDescription),
 
 src.exposureOrder.map(function(e){
     var ss = src.exposures[e].split('=>');
-    return '* **'+e+ss[0]+'**\n  * '+ss[1].replace(/\n\n/g, '\n    ');
+    return '* **'+e+ss[0].trim()+'**\n  * '+ss[1].replace(/\n\n/g, '\n    ');
 
 }).join('\n\n')+
 
