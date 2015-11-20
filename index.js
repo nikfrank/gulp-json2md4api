@@ -21,7 +21,7 @@ module.exports = function (options) {
 	    }
 
 	    file.contents = new Buffer(data);
-	    file.path = gutil.replaceExtension(file.path, '.md');
+	    file.path = 'README.md';
 
 	    cb(null, file);
 	});
