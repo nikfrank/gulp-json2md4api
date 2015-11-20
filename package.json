@@ -1,6 +1,6 @@
 {
   "name": "gulp-json2md4api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "JSON to markdown for use as API docs",
   "license": "MIT",
   "repository": {
@@ -23,17 +23,13 @@
   ],
   "keywords": [
     "gulpplugin",
-    "markdown",
-    "marked",
-    "md",
     "compile",
     "convert",
-    "markup",
-    "html"
+    "json",
+    "markdown"
   ],
   "dependencies": {
     "gulp-util": "^3.0.7",
-    "marked": "^0.3.2",
     "through2": "^2.0.0"
   },
   "devDependencies": {
