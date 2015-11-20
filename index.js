@@ -21,7 +21,7 @@ module.exports = function (options) {
 	    }
 
 	    file.contents = new Buffer(data);
-	    file.path = 'README.md';
+	    file.path = file.path.replace('api.json', 'README.md');
 
 	    cb(null, file);
 	});
