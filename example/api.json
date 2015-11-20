@@ -41,7 +41,7 @@
 		'0':'"types" for the functional minded. Each schema has a table and a format',
 		"<<schemaName>>":{
 		    '0':'the keys here are the schema names',
-		    fields:'object of:\n\nkeys - fields on every item; \n\n values - dynamo type. see: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html',
+		    fields:'object of:\n\nkeys - fields on every item; \n\n values - dynamo type. see: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html\n((check impl.))',
 		    table:{
 			'0':'Table description from AWS. Read the DataModel link re: indices',
 			arn:'grab this off the table properties',
@@ -73,6 +73,7 @@
 
 	erase:'(schemaName, query) => pass in a schema, hashKey and rangeKey to delete the item'
     },
-    notes:'Scan operations are not supported because I think they\'re stupid. I\'m sure that\'ll \n\n'+
+    exposureOrder:['init', 'write', 'save', 'load', 'erase'],
+    notes:'Scan operations are not supported because I think they\'re stupid. I\'m sure that\'ll '+
 	'change eventually'
 }

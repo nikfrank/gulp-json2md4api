@@ -94,87 +94,104 @@ Available [`here`](https://github.com/nikfrank/canijs/tree/master/cani-dynamo/ex
 
 
 
-config..dynamo
+* **config..dynamo**
+
+  * 
+
+* **config.dynamo.schemas**
+
+  * "types" for the functional minded. Each schema has a table and a format
+
+
+
+* **config.dynamo.schemas.<<schemaName>>**
+
+  * the keys here are the schema names
+
+
+
+* **config.dynamo.schemas.<<schemaName>>.fields**
+
+  * object of:
+    * keys - fields on every item; 
+    *  values - dynamo type. see: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html
+  * ((check impl.))
+
+
+
+* **config.dynamo.schemas.<<schemaName>>.table**
+
+  * Table description from AWS. Read the DataModel link re: indices
+
+
+
+* **config.dynamo.schemas.<<schemaName>>.table.arn**
+
+  * grab this off the table properties
+
+
+
+* **config.dynamo.schemas.<<schemaName>>.table.hashKey**
+
+  * exact query main hash key
+
+
+
+* **config.dynamo.schemas.<<schemaName>>.table.rangeKey**
+
+  * operator query range key
+
+
+
+* **config.dynamo.schemas.<<schemaName>>.table.indices**
+
+  * additional indices on table. Yet unimplemented here.
+
+
+
+
+
+
+* **config.dynamo.awsConfigPack**
+
+  * object to configure region. This is inconsistent withe cognito conf :(
+
+
+
+* **config.dynamo.initOn**
+
+  * array of events to trigger Cani.dynamo.init on. Use this with login events!
+
+
+
+
+### Module Exposures
 ---
 
+* **init**
+  * () => this is used internally with initOn, but you can init whenever you want
+    keep in mind though, the auth state of the window.AWS singleton at the time of init
+    stays withis table for its lifecycle. So only init once you've authed!
+
+* **write**
+  * ((unimplemented)) => will be used once the grammar is standardized.
+
+* **save**
+  * ('schemaName', {query}) => query is the entire object you're saving
+    Cani.dyanmo will guess the type to save as unless explicitly stated in schema conf.
+
+* **load**
+  * ('schemaName', {query}, (({options})) ) => options ((unimplemented)) to set index
+    query is {hashKey:'val', otherKey:{operator:'val'}, odKey:'val'}
+    operator is from [EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN] for key &
+    from [EQ | NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN] for other?
+    see http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Condition.html
+
+* **erase**
+  * (schemaName, query) => pass in a schema, hashKey and rangeKey to delete the item
 
 
-config.dynamo.schemas
+# Notes
 ---
 
-"types" for the functional minded. Each schema has a table and a format
-
-
-
-config.dynamo.schemas.<<schemaName>>
----
-
-the keys here are the schema names
-
-
-
-config.dynamo.schemas.<<schemaName>>.fields
----
-
-object of:
-
-keys - fields on every item; 
-
- values - dynamo type. see: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html
-
-
-
-config.dynamo.schemas.<<schemaName>>.table
----
-
-Table description from AWS. Read the DataModel link re: indices
-
-
-
-config.dynamo.schemas.<<schemaName>>.table.arn
----
-
-grab this off the table properties
-
-
-
-config.dynamo.schemas.<<schemaName>>.table.hashKey
----
-
-exact query main hash key
-
-
-
-config.dynamo.schemas.<<schemaName>>.table.rangeKey
----
-
-operator query range key
-
-
-
-config.dynamo.schemas.<<schemaName>>.table.indices
----
-
-additional indices on table. Yet unimplemented here.
-
-
-
-
-
-
-config.dynamo.awsConfigPack
----
-
-object to configure region. This is inconsistent withe cognito conf :(
-
-
-
-config.dynamo.initOn
----
-
-array of events to trigger Cani.dynamo.init on. Use this with login events!
-
-
-
-
-...
+Scan operations are not supported because I think they're stupid. I'm sure that'll change eventually

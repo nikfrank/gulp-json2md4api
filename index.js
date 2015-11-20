@@ -86,9 +86,15 @@ Object.keys(src.configDescription).reduce(objCreduce([], src.configDescription),
 
 
 // exposures
+'### Module Exposures\n'+
+"---\n\n"+
 
+src.exposureOrder.map(function(e){
+    return '* **'+e+'**\n  * '+src.exposures[e].replace(/\n\n/g, '\n    ');
 
-"...";
+}).join('\n\n')+
+
+"\n\n\n# Notes\n---\n\n"+src.notes;
 
     cb(null, template);
 
@@ -98,12 +104,12 @@ function objCreduce(prefices, o){
     return function(p, c){
 	if(c === '0') return p+o['0']+'\n\n';
 
+	p += '\n\n* **config.'+prefices.join('.')+'.'+c+'**\n\n  * ';
+
 	if(typeof o[c] === 'string'){
-	    p += '\n\nconfig.'+prefices.join('.')+'.'+c+'\n---\n\n';
-	    p += o[c]+'\n\n';
+	    p += o[c].replace(/\n\n/g, '\t    * ').replace(/\n/g, '\n  * ').replace(/\t/g,'\n')+'\n\n';
 	}
 	else if(typeof o[c] === 'object') {
-	    p += '\n\nconfig.'+prefices.join('.')+'.'+c+'\n---\n\n';
 	    p += Object.keys(o[c]).reduce(objCreduce(prefices.concat(c), o[c]), '')+'\n';
 	}
 	return p;
