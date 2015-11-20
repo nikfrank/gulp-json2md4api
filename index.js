@@ -68,7 +68,7 @@ src.basicUse.join('\n```\n```js\n')+
 
 src.basicUsePostText+
 
-"## Examples\n"+
+"\n## Examples\n"+
 "---\n\n"+
 
 "Available [`here`](https://github.com/nikfrank/canijs/tree/master/"+src.title.toLowerCase()+"/example)\n\n\n"+

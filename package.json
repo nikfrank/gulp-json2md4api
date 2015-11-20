@@ -1,6 +1,6 @@
 {
   "name": "gulp-json2md4api",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "JSON to markdown for use as API docs",
   "license": "MIT",
   "repository": {
