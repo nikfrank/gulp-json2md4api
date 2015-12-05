@@ -47,7 +47,7 @@ src.scripts.map(function(s){
 "```js\n"+syntaxHighlight(src.configExample)+
 "\n```\n\n"+
 
-"see [`demo-caniconfig.js`](https://github.com/nikfrank/canijs/blob/master/src/docs/democonfig.js)\n"+
+"see [`demo-caniconfig.js`](https://github.com/nikfrank/canijs/blob/master/democonfig.js)\n"+
 "for examples of all the config options for all the modules\n\n\n"+
 
 "## Getting Started\n"+
